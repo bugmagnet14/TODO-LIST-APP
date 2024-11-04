@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
             home: TaskListScreen(),
           );
