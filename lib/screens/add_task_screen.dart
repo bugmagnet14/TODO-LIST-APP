@@ -4,6 +4,7 @@ import '../models/task.dart';
 import '../providers/task_provider.dart';
 
 class AddTaskScreen extends StatefulWidget {
+  const AddTaskScreen({super.key});
   @override
   _AddTaskScreenState createState() => _AddTaskScreenState();
 }
@@ -16,22 +17,22 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Add Task')),
+      appBar: AppBar(title: const Text('Add Task')),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: const InputDecoration(labelText: 'Title'),
             ),
             TextField(
               controller: _descriptionController,
-              decoration: InputDecoration(labelText: 'Description'),
+              decoration: const InputDecoration(labelText: 'Description'),
             ),
             DropdownButton<int>(
               value: _priority,
-              items: [
+              items: const [
                 DropdownMenuItem(value: 1, child: Text('High')),
                 DropdownMenuItem(value: 2, child: Text('Medium')),
                 DropdownMenuItem(value: 3, child: Text('Low')),
@@ -42,7 +43,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 });
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 final task = Task(
@@ -54,7 +55,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 Provider.of<TaskProvider>(context, listen: false).addTask(task);
                 Navigator.pop(context);
               },
-              child: Text('Add Task'),
+              child: const Text('Add Task'),
             ),
           ],
         ),

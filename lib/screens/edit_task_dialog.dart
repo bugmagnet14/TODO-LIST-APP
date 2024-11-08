@@ -6,7 +6,7 @@ class EditTaskDialog extends StatefulWidget {
   final Task task;
   final Function(Task) onUpdate;
 
-  EditTaskDialog({required this.task, required this.onUpdate});
+  const EditTaskDialog({required this.task, required this.onUpdate, super.key});
 
   @override
   _EditTaskDialogState createState() => _EditTaskDialogState();
@@ -45,7 +45,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
     } else {
       // Handle empty title case (e.g., show a Snackbar)
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Title cannot be empty')),
+        const SnackBar(content: Text('Title cannot be empty')),
       );
     }
   }
@@ -53,17 +53,17 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Edit Task'),
+      title: const Text('Edit Task'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: titleController,
-            decoration: InputDecoration(labelText: 'Title'),
+            decoration: const InputDecoration(labelText: 'Title'),
           ),
           TextField(
             controller: descriptionController,
-            decoration: InputDecoration(labelText: 'Description'),
+            decoration: const InputDecoration(labelText: 'Description'),
           ),
           DropdownButton<int>(
             value: priority,
@@ -72,7 +72,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                 priority = newValue!;
               });
             },
-            items: [
+            items: const [
               DropdownMenuItem(value: 0, child: Text('Low')),
               DropdownMenuItem(value: 1, child: Text('Medium')),
               DropdownMenuItem(value: 2, child: Text('High')),
@@ -81,8 +81,8 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
         ],
       ),
       actions: [
-        TextButton(onPressed: _submit, child: Text('Save')),
-        TextButton(onPressed: () => Navigator.of(context).pop(), child: Text('Cancel')),
+        TextButton(onPressed: _submit, child: const Text('Save')),
+        TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
       ],
     );
   }
